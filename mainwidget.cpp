@@ -38,12 +38,14 @@ bool mainWidget::Create_zcp(){
         temp->reflect = nowzcp->reflect;
     }
     temp->updatebyref();
+    temp->update();
 
     item->setText(temp->Tostring(0));
     item->setData(Qt::UserRole,QVariant::fromValue((void *) temp));
     ui->listWidget->addItem(item);
     NowItem = item;
     nowzcp = temp;
+
     zcps.append(temp);
 
     num++;
