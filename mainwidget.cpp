@@ -7,8 +7,7 @@ mainWidget::mainWidget(QWidget *parent)
     , ui(new Ui::mainWidget)
 {
     ui->setupUi(this);
-//    width = 400;
-//    height = 400;
+    setWindowTitle("smithCircle");
     size = 200;
 
 
