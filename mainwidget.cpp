@@ -168,7 +168,13 @@ void mainWidget::mouseReleaseEvent(QMouseEvent* event){
     Q_UNUSED(event);
 
 }
+void mainWidget::resizeEvent(QResizeEvent *event){
+    size = 200*event->size().height()/420.0;
 
+}
+
+
+///////////////
 void mainWidget::on_radioButton_clicked()
 {
     freemode = 1;

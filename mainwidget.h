@@ -53,6 +53,7 @@ protected:
     void mouseReleaseEvent(QMouseEvent* event);
     void mousePressEvent(QMouseEvent* event);
     void paintEvent(QPaintEvent* event);
+    void resizeEvent(QResizeEvent *event);
 private slots:
 //    void on_radioButton_clicked(bool checked);
     void on_radioButton_2_clicked();
