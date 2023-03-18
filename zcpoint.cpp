@@ -22,6 +22,7 @@ void zcpoint::updatebyref(){
     y = reflect.getimag();
     r = reflect.getlen();
     ro = (1+r)/(1-r);
+    yl = 1/zl;
 }
 void zcpoint::updatebyz(){
 
@@ -30,8 +31,10 @@ void zcpoint::updatebyz(){
     y = reflect.getimag();
     r = reflect.getlen();
     ro = (1+r)/(1-r);
+
     zr = zl.getreal();
     zx = zl.getimag();
+    yl = 1/zl;
 }
 void zcpoint::update(){
 
@@ -65,11 +68,14 @@ QString zcpoint::Tostring(int mode)
 {
     switch (mode) {
 
-    case 0:
+    case 0://阻抗
         return (QString::number(x,'g',4)+ (y>0?"+":"") +QString::number(y,'g',4) + "j");
         break;
     case 1:
         return (QString::number(zr,'g',4)+ (zx>0?"+":"") +QString::number(zx,'g',4) + "j");
+        break;
+    case 2: //导纳
+        return (QString::number(yl.getreal(),'g',4)+ (y<0?"+":"") +QString::number(yl.getimag(),'g',4) + "j");
         break;
     default:
         return "error";

@@ -16,6 +16,7 @@ public:
     double ro;//驻波系数
 
     MyComplex zl;//归一化阻抗
+    MyComplex yl;//归一化导纳
     double zr;  //归一化电阻
     double zx;  //归一化电抗
 //    std::complex<double> reflect=0;

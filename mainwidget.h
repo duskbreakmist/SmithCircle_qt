@@ -69,5 +69,6 @@ private slots:
 
     void on_listWidget_itemDoubleClicked(QListWidgetItem *item);
     void on_listWidget_itemClicked(QListWidgetItem *item);
+    void on_pushButton_5_clicked();
 };
 #endif // MAINWIDGET_H

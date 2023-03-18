@@ -14,7 +14,9 @@ mainWidget::mainWidget(QWidget *parent)
     num=0;
     maxnum = 20;
     Create_zcp();
-//    nowzcp = &zcps[0];
+//    nowzcp->updatebyref();
+//    updategraph();
+
 
     freemode = 0;
 }
@@ -31,6 +33,12 @@ bool mainWidget::Create_zcp(){
     }
     QListWidgetItem * item = new QListWidgetItem;
     zcpoint* temp = new zcpoint;
+
+    if(num>=1){
+        temp->reflect = nowzcp->reflect;
+    }
+    temp->updatebyref();
+
     item->setText(temp->Tostring(0));
     item->setData(Qt::UserRole,QVariant::fromValue((void *) temp));
     ui->listWidget->addItem(item);
@@ -97,7 +105,7 @@ void mainWidget::updategraph(){
     ui->label_14->setText(QString::number( (1-nowzcp->ang/3.141592)/4)) ;
     ui->label_18->setText(QString::number(nowzcp->r));
     ui->label_19->setText(QString::number(nowzcp->ro));
-
+    ui->label_21->setText(nowzcp->Tostring(2));
     update();
     NowItem->setText(nowzcp->Tostring());
 }
@@ -258,6 +266,17 @@ void mainWidget::on_listWidget_itemClicked(QListWidgetItem *item)
     NowItem = item;
     ui->label_13->setText(item->text());
     nowzcp = (zcpoint*)NowItem->data(Qt::UserRole).value<void *>();
+    updategraph();
+}
+
+
+void mainWidget::on_pushButton_5_clicked()
+{
+    //旋转
+    double ang = ui->textEdit_7->toPlainText().toDouble()*4*3.1415926;
+    nowzcp->reflect = nowzcp->reflect * MyComplex(cos(ang),sin(ang));
+    nowzcp->updatebyref();
+    nowzcp->update();
     updategraph();
 }
 
